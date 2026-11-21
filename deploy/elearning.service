@@ -1,0 +1,20 @@
+[Unit]
+Description=E-learning API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=elearning
+Group=elearning
+WorkingDirectory=/opt/elearning/current/server
+ExecStart=/usr/bin/node index.js
+Environment=NODE_ENV=production
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
